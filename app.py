@@ -1,13 +1,14 @@
 from flask import Flask, jsonify, render_template, request
-import sqlite3
+import psycopg
+
+import os
+
+database_url = os.environ["DATABASE_URL"]
 
 app = Flask(__name__)
 
 def get_database():
-    database = sqlite3.connect("database.db")
-    database.row_factory = sqlite3.Row
-
-    return database
+    return psycopg.connect(database_url) 
 
 @app.route("/")
 def home():
@@ -22,12 +23,12 @@ def login():
 
     database = get_database()
 
-    user = database.execute("SELECT id FROM users WHERE email = ? AND name = ?", (email, name)).fetchone()
+    user = database.execute("SELECT id FROM users WHERE email = %s AND name = %s", (email, name)).fetchone()
     if user is not None:
         database.close()
         return f"Hello, {name}!"
 
-    database.execute("INSERT INTO users (name, email) VALUES(?, ?)", (name, email))
+    database.execute("INSERT INTO users (name, email) VALUES(%s, %s)", (name, email))
 
     database.commit()
     database.close()
