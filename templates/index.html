@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="static/style.css">
+    <title>Home</title>
+</head>
+<body>
+    <nav>
+    <ul>
+        <li><a href="#">Page 1</a></li>
+        <li><a href="#">Page 2</a></li>
+        <li><a href="#">Page 3 is longer</a></li>
+        <li><a href="#">Page 4</a></li>
+    </ul>
+    </nav>
+    <form action="/login" method="post">
+        <p>
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name">
+        </p>
+        <p>
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email">
+        </p>
+        <p class="button">
+            <button type="submit">Submit</button>
+        </p>
+    </form>
+
+    <style>
+        body {
+            text-align: center;
+        }
+
+        form {
+            display: inline-block;
+            padding: 1em;
+            border: 1px solid #cccccc;
+            border-radius: 1em;
+        }
+
+        p + p {
+            margin-top: 1em;
+        }
+
+        label {
+            display: inline-block;
+            min-width: 90px;
+            text-align: center;
+        }
+
+        input, textarea {
+            font: 1em sans-serif;
+            width: 300px;
+            box-sizing: border-box;
+            border: 1px solid #999999;
+        }
+
+        input:focus, textarea:focus {
+            outline-style: solid;
+            outline-color: black;
+        }
+
+        textarea {
+            vertical-align: top;
+            height: 5em;
+        }
+
+        .button {
+            padding-left: 90px;
+        }
+
+        button {
+            margin-left: 0.5em;
+        }
+    </style>
+</body>
+</html>
