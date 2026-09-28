@@ -1,4 +1,5 @@
 from flask import Flask, jsonify, render_template, request
+from psycopg.rows import dict_row
 import psycopg
 
 import os
@@ -8,7 +9,7 @@ database_url = os.environ["DATABASE_URL"]
 app = Flask(__name__)
 
 def get_database():
-    return psycopg.connect(database_url) 
+    return psycopg.connect(database_url, row_factory=dict_row) 
 
 @app.route("/")
 def home():
