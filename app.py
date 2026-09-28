@@ -52,5 +52,9 @@ def get_users():
 
     return jsonify([dict(user) for user in users])
 
+@app.route("/<string:username>")
+def profile(username):
+    return render_template("profile.html", username=username)
+
 if __name__ == "__main__":
     app.run(debug=True)
