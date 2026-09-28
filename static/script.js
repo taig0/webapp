@@ -13,6 +13,7 @@ async function load_users() {
             <td>${user.id}</td>
             <td>${user.name}</td>
             <td>${user.email}</td>
+            <button>Follow</button>
         `;
 
         table.appendChild(row);
