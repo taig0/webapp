@@ -36,6 +36,10 @@ def login():
 
     return "User created!"
 
+@app.route("/users")
+def users_page():
+    return render_template("users.html")
+
 @app.route("/api/users")
 def get_users():
     database = get_database()
